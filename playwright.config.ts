@@ -38,6 +38,12 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'api',
+      testMatch: 'branch.api.spec.ts',
+      use: { baseURL: process.env.API_BASE_URL },
+    },
+
+    {
       name: 'chromium',
       testIgnore: 'branch.api.spec.ts',
       use: { ...devices['Desktop Chrome'] },
