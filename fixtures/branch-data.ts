@@ -25,11 +25,11 @@ export interface BranchUpdateData {
 }
 
 const generatePhoneNumber = (): string => {
-  const randomDigits = Math.floor(Math.random() * 1e8)
+  const randomDigits = Math.floor(Math.random() * 1e7)
     .toString()
-    .padStart(8, '0');
+    .padStart(7, '0');
 
-  return `98${randomDigits}`;
+  return `980${randomDigits}`;
 };
 
 export const generateBranchData = (): BranchData => {

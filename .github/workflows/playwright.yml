@@ -17,10 +17,16 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
+    - name: Run Playwright UI tests
       run: npx playwright test
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
+        ORG_ADMIN_EMAIL: ${{ secrets.ORG_ADMIN_EMAIL }}
+        ORG_ADMIN_PASSWORD: ${{ secrets.ORG_ADMIN_PASSWORD }}
+    - name: Run Playwright API tests
+      run: npx playwright test --config=playwright.api.config.ts
+      env:
+        API_BASE_URL: ${{ secrets.API_BASE_URL }}
         ORG_ADMIN_EMAIL: ${{ secrets.ORG_ADMIN_EMAIL }}
         ORG_ADMIN_PASSWORD: ${{ secrets.ORG_ADMIN_PASSWORD }}
     - uses: actions/upload-artifact@v4

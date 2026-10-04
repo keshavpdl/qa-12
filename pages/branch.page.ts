@@ -26,7 +26,7 @@ export class BranchPage {
     await branchListLocators(this.page).addBranchButton.click();
   }
 
-  private async fillPhoneNumber(phoneInput: Locator, digits: string) {
+  private async fillPhoneNumber(phoneInput: Locator, phoneNumber: string) {
     await phoneInput.click();
     await phoneInput.press('End');
 
@@ -35,7 +35,7 @@ export class BranchPage {
       await phoneInput.press('Backspace');
     }
 
-    await phoneInput.pressSequentially(digits);
+    await phoneInput.pressSequentially(phoneNumber);
   }
 
   private async selectStatus(status: 'Active' | 'Inactive') {

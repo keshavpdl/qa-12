@@ -39,16 +39,19 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+      testIgnore: 'branch.api.spec.ts',
       use: { ...devices['Desktop Chrome'] },
     },
 
     {
       name: 'firefox',
+      testIgnore: 'branch.api.spec.ts',
       use: { ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'webkit',
+      testIgnore: 'branch.api.spec.ts',
       use: { ...devices['Desktop Safari'] },
     },
 
