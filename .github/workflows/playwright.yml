@@ -4,6 +4,10 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
+concurrency:
+  group: playwright-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
     timeout-minutes: 60
@@ -12,7 +16,8 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: lts/*
+        node-version: 20
+        cache: npm
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
@@ -24,7 +29,8 @@ jobs:
         API_BASE_URL: ${{ secrets.API_BASE_URL }}
         ORG_ADMIN_EMAIL: ${{ secrets.ORG_ADMIN_EMAIL }}
         ORG_ADMIN_PASSWORD: ${{ secrets.ORG_ADMIN_PASSWORD }}
-    - uses: actions/upload-artifact@v4
+    - name: Upload Playwright Report
+      uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: playwright-report

@@ -3,11 +3,13 @@ import { Locator, Page } from '@playwright/test';
 export interface BranchListLocators {
   branchesNavLink: Locator;
   addBranchButton: Locator;
+  searchInput: Locator;
 }
 
 export const branchListLocators = (page: Page): BranchListLocators => ({
   branchesNavLink: page.getByRole('link', { name: 'Branches' }),
   addBranchButton: page.getByRole('button', { name: 'Add Branch' }).first(),
+  searchInput: page.getByPlaceholder('Search...'),
 });
 
 export const branchRow = (page: Page, identifier: string): Locator =>

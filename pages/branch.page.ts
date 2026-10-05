@@ -26,6 +26,10 @@ export class BranchPage {
     await branchListLocators(this.page).addBranchButton.click();
   }
 
+  async searchBranch(query: string) {
+    await branchListLocators(this.page).searchInput.fill(query);
+  }
+
   private async fillPhoneNumber(phoneInput: Locator, phoneNumber: string) {
     await phoneInput.click();
     await phoneInput.press('End');
