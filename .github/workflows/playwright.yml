@@ -27,8 +27,8 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test
       env:
-        BASE_URL: ${{ secrets.BASE_URL }}
-        API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        BASE_URL: ${{ vars.BASE_URL }}
+        API_BASE_URL: ${{ vars.API_BASE_URL }}
         ORG_ADMIN_EMAIL: ${{ secrets.ORG_ADMIN_EMAIL }}
         ORG_ADMIN_PASSWORD: ${{ secrets.ORG_ADMIN_PASSWORD }}
     - name: Upload Playwright Report
