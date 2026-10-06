@@ -1,3 +1,4 @@
+## This workflow will run Playwright tests on push or pull request to the main or master branch.
 name: Playwright Tests
 on:
   push:
